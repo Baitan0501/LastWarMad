@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last War: Desert Storm Strategy</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #1a1a1a; color: #e0e0e0; margin: 0; padding: 15px; line-height: 1.5; }
+        .container { max-width: 900px; margin: 0 auto; background: #262626; padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { text-align: center; color: #f1c40f; text-transform: uppercase; font-size: 1.4em; margin-bottom: 15px; }
+        .lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 6px; margin-bottom: 20px; }
+        .lang-btn { padding: 8px; cursor: pointer; border: 1px solid #444; border-radius: 4px; background: #333; color: #fff; transition: 0.2s; font-size: 11px; }
+        .lang-btn:hover { border-color: #f1c40f; }
+        .lang-btn.active { background: #f1c40f; color: #000; font-weight: bold; border-color: #f1c40f; }
+        .strategy-text { background: #333; padding: 18px; border-radius: 8px; border-left: 5px solid #f1c40f; margin-bottom: 15px; min-height: 250px; }
+        .strategy-text p { margin: 0 0 10px 0; font-size: 14px; }
+        .image-container { text-align: center; }
+        img { max-width: 100%; border-radius: 8px; border: 2px solid #444; }
+        .rtl { direction: rtl; text-align: right; border-left: none; border-right: 5px solid #f1c40f; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Desert Storm Strategy</h1>
+    <div class="lang-grid" id="langGrid"></div>
+    <div class="strategy-text" id="content"></div>
+    <div class="image-container">
+        <img id="strategyMap" src="your_image.png" alt="Strategy Map">
+    </div>
+</div>
+
+<script>
+    const translations = {
+        ru: {
+            name: "Русский",
+            text: `<p><strong>Пункт 1:</strong> делимся на группы как на картинке, согласно вашему местоположению на карте.</p>
+                   <p><strong>Пункт 2:</strong> атакуем и удерживаем здания согласно схеме.</p>
+                   <p><strong>Пункт 3:</strong> если вы один из 4 самых сильных игроков — вы Кит. Ваша задача уничтожать дома противников. Кит сам решает, где нужна помощь.</p>
+                   <p><strong>Пункт 4:</strong> спустя 10 минут открываются шахта, арсенал и фабрика. Группы 3 и 4 берут шахту, 5 — арсенал, 6 — фабрику.</p>
+                   <p><strong>Общие рекомендации:</strong> не держите войска на стене, делайте разведку, не атакуйте тех, кто намного сильнее вас.</p>`
+        },
+        ua: {
+            name: "Українська",
+            text: `<p><strong>Пункт 1:</strong> ділимося на групи як на фото, згідно з вашим розташуванням на карті.</p>
+                   <p><strong>Пункт 2:</strong> атакуємо та утримуємо будівлі за схемою.</p>
+                   <p><strong>Пункт 3:</strong> якщо ви в топ-4 — ви Кит. Ваше завдання — палити бази ворогів. Кит сам обирає ціль.</p>
+                   <p><strong>Пункт 4:</strong> через 10 хв відкриваються шахта, арсенал та фабрика. Групи 3 і 4 беруть шахту, 5 — арсенал, 6 — фабрику.</p>
+                   <p><strong>Загальні рекомендації:</strong> приберіть війська зі стін, робіть розвідку, не атакуйте набагато сильніших ворогів.</p>`
+        },
+        en: {
+            name: "English",
+            text: `<p><strong>Step 1:</strong> Divide into groups as shown based on your location on the map.</p>
+                   <p><strong>Step 2:</strong> Attack and hold buildings according to the scheme.</p>
+                   <p><strong>Step 3:</strong> If you are one of the top 4 strongest — you are a Whale. Your job is to destroy enemy bases.</p>
+                   <p><strong>Step 4:</strong> After 10 min, the Silo, Arsenal, and Factory open. Groups 3 & 4 capture the Silo.</p>
+                   <p><strong>General recommendations:</strong> Do not keep troops on the wall, scout often, and don't attack players much stronger than you.</p>`
+        },
+        es: {
+            name: "Español",
+            text: `<p><strong>Punto 1:</strong> Divídanse en grupos según la imagen y su ubicación en el mapa.</p>
+                   <p><strong>Punto 2:</strong> Ataquen y mantengan los edificios según el esquema.</p>
+                   <p><strong>Punto 3:</strong> Si eres uno de los 4 más fuertes, eres una Ballena. Tu tarea es destruir las bases enemigas.</p>
+                   <p><strong>Punto 4:</strong> Después de 10 min se abren el Silo, Arsenal y Fábrica. Grupos 3 y 4 capturan el Silo.</p>
+                   <p><strong>Recomendaciones:</strong> No dejes tropas en el muro, haz exploración y evita atacar a los más fuertes.</p>`
+        },
+        de: {
+            name: "Deutsch",
+            text: `<p><strong>Punkt 1:</strong> In Gruppen aufteilen gemäß Bild und Position auf der Karte.</p>
+                   <p><strong>Punkt 2:</strong> Gebäude gemäß Plan angreifen und halten.</p>
+                   <p><strong>Punkt 3:</strong> Wenn du unter den Top 4 bist, bist du ein Wal. Deine Aufgabe ist es, Feindbasen zu zerstören.</p>
+                   <p><strong>Punkt 4:</strong> Nach 10 Min öffnen Silo, Arsenal und Fabrik. Gruppen 3 & 4 nehmen das Silo ein.</p>
+                   <p><strong>Empfehlungen:</strong> Keine Truppen auf der Mauer lassen, Spionage nutzen, keine zu starken Gegner angreifen.</p>`
+        },
+        fr: {
+            name: "Français",
+            text: `<p><strong>Point 1:</strong> Divisez-vous en groupes selon l'image et votre position.</p>
+                   <p><strong>Point 2:</strong> Attaquez et tenez les bâtiments selon le plan.</p>
+                   <p><strong>Point 3:</strong> Si vous êtes dans le top 4, vous êtes une Baleine. Votre rôle est de détruire les bases ennemies.</p>
+                   <p><strong>Point 4:</strong> Après 10 min, le Silo, l'Arsenal et l'Usine s'ouvrent. Groupes 3 et 4 prennent le Silo.</p>
+                   <p><strong>Conseils:</strong> Ne laissez pas de troupes sur le mur, faites des reconnaissances régulières.</p>`
+        },
+        it: {
+            name: "Italiano",
+            text: `<p><strong>Punto 1:</strong> Dividetevi in gruppi come da immagine in base alla posizione.</p>
+                   <p><strong>Punto 2:</strong> Attaccate e mantenete gli edifici secondo lo schema.</p>
+                   <p><strong>Punto 3:</strong> Se sei tra i 4 più forti, sei una Balena. Il tuo compito è distruggere le basi nemiche.</p>
+                   <p><strong>Punto 4:</strong> Dopo 10 min si aprono Silo, Arsenale e Fabbrica. Gruppi 3 e 4 prendono il Silo.</p>
+                   <p><strong>Raccomandazioni:</strong> Non tenere truppe sulle mura, fai ricognizione, evita i nemici troppo forti.</p>`
+        },
+        tr: {
+            name: "Türkçe",
+            text: `<p><strong>1. Madde:</strong> Resimdeki gibi gruplara ayrılın.</p>
+                   <p><strong>2. Madde:</strong> Şemaya göre binalara saldırın ve tutun.</p>
+                   <p><strong>3. Madde:</strong> En güçlü 4 oyuncudan biriyseniz Balinasınız. Göreviniz düşman üslerini yok etmektir.</p>
+                   <p><strong>4. Madde:</strong> 10 dk sonra Silo, Cephanelik ve Fabrika açılır. 3. ve 4. gruplar Silo'yu alır.</p>
+                   <p><strong>Öneriler:</strong> Duvarlarda birlik tutmayın, keşif yapın ve çok güçlü rakiplere saldırmayın.</p>`
+        },
+        pl: {
+            name: "Polski",
+            text: `<p><strong>Punkt 1:</strong> Podział na grupy według obrazka i lokalizacji.</p>
+                   <p><strong>Punkt 2:</strong> Atakuj i utrzymaj budynki zgodnie ze schematem.</p>
+                   <p><strong>Punkt 3:</strong> Jeśli jesteś w top 4, jesteś Wielorybem. Twoim zadaniem jest niszczenie baz wroga.</p>
+                   <p><strong>Punkt 4:</strong> Po 10 min otwierają się Silos, Arsenał i Fabryka. Grupy 3 i 4 zajmują Silos.</p>
+                   <p><strong>Zalecenia:</strong> Zdejmij wojsko z murów, rób zwiad, nie atakuj silniejszych od siebie.</p>`
+        },
+        kz: {
+            name: "Қазақша",
+            text: `<p><strong>1-кезең:</strong> Суреттегідей топтарға бөлініңіз.</p>
+                   <p><strong>2-кезең:</strong> Схема бойынша ғимараттарды басып алып, ұстап тұрыңыз.</p>
+                   <p><strong>3-кезең:</strong> Егер топ-4 мықтының бірі болсаңыз — сіз Китсіз. Міндетіңіз — жау базаларын жою.</p>
+                   <p><strong>4-кезең:</strong> 10 минуттан кейін Шахта, Арсенал және Фабрика ашылады. 3-4 топ Шахтаны алады.</p>
+                   <p><strong>Ұсыныстар:</strong> Әскерді қабырғада ұстамаңыз, барлау жасаңыз, өте мықтыларға шабуылдамаңыз.</p>`
+        },
+        pt: {
+            name: "Português",
+            text: `<p><strong>Ponto 1:</strong> Dividam-se em grupos conforme a imagem e sua localização.</p>
+                   <p><strong>Ponto 2:</strong> Ataquem e mantenham os edifícios conforme o esquema.</p>
+                   <p><strong>Ponto 3:</strong> Se você for um dos 4 mais fortes, você é uma Baleia. Sua tarefa é destruir bases inimigas.</p>
+                   <p><strong>Ponto 4:</strong> Após 10 min abrem-se o Silo, Arsenal e Fábrica. Grupos 3 e 4 capturam o Silo.</p>
+                   <p><strong>Recomendações:</strong> Não deixe tropas no muro, faça reconhecimento, evite os mais fortes.</p>`
+        },
+        nl: {
+            name: "Nederlands",
+            text: `<p><strong>Stap 1:</strong> Verdeel in groepen volgens de afbeelding.</p>
+                   <p><strong>Stap 2:</strong> Val gebouwen aan en houd ze vast volgens het schema.</p>
+                   <p><strong>Stap 3:</strong> Als je in de top 4 zit, ben je een Whale. Jouw taak is vijandelijke bases te vernietigen.</p>
+                   <p><strong>Stap 4:</strong> Na 10 min openen de Silo, het Arsenaal en de Fabriek.</p>
+                   <p><strong>Aanbevelingen:</strong> Houd geen troepen op de muur, verken vaak.</p>`
+        },
+        se: {
+            name: "Svenska",
+            text: `<p><strong>Punkt 1:</strong> Dela upp i grupper enligt bilden.</p>
+                   <p><strong>Punkt 2:</strong> Attackera och håll byggnader enligt schemat.</p>
+                   <p><strong>Punkt 3:</strong> Om du är topp 4 är du en Whale. Din uppgift är att förstöra fiendebaser.</p>
+                   <p><strong>Punkt 4:</strong> Efter 10 min öppnas Silon, Arsenalen och Fabriken.</p>
+                   <p><strong>Rekommendationer:</strong> Ha inga trupper på muren, scouta ofta.</p>`
+        },
+        cn: {
+            name: "中文 (简体)",
+            text: `<p><strong>第1步:</strong> 按图分队。查看你的位置并加入相应小组。</p>
+                   <p><strong>第2步:</strong> 根据方案进攻并占领建筑。</p>
+                   <p><strong>第3步:</strong> 如果你是战力前4名，你就是“鲸鱼”。负责摧毁敌方基地。</p>
+                   <p><strong>第4步:</strong> 10分钟后：核弹井、军火库、雇佣兵工厂开启。3和4组占领核弹井。</p>
+                   <p><strong>建议：</strong> 城墙别留兵，多侦察，不要硬碰强敌。</p>`
+        },
+        tw: {
+            name: "中文 (繁體)",
+            text: `<p><strong>第1步:</strong> 按圖分隊。查看你的位置並加入相應小組。</p>
+                   <p><strong>第2步:</strong> 根據方案進攻並佔領建築。</p>
+                   <p><strong>第3步:</strong> 如果你是戰力前4名，你就是「鯨魚」。負責摧毀敵方基地。</p>
+                   <p><strong>第4步:</strong> 10分鐘後：核彈井、軍火庫、雇傭兵工廠開啟。3和4組佔領核彈井。</p>
+                   <p><strong>建議：</strong> 城牆別留兵，多偵察。</p>`
+        },
+        jp: {
+            name: "日本語",
+            text: `<p><strong>ステップ1:</strong> 画像のようにグループに分かれます。</p>
+                   <p><strong>ステップ2:</strong> 図に従って建物を攻撃し、保持します。</p>
+                   <p><strong>ステップ3:</strong> 戦力上位4名は「鯨」です。敵の基地を破壊してください。</p>
+                   <p><strong>ステップ4:</strong> 10分後、サイロ、兵器庫、工場が開放されます。</p>
+                   <p><strong>推奨事項:</strong> 壁に部隊を置かないでください。偵察を忘れずに。</p>`
+        },
+        kr: {
+            name: "한국어",
+            text: `<p><strong>1단계:</strong> 이미지에 따라 그룹으로 나눕니다.</p>
+                   <p><strong>2단계:</strong> 계획에 따라 건물을 공격하고 점령하십시오.</p>
+                   <p><strong>3단계:</strong> 상위 4명은 '고래'입니다. 적 기지를 불태우십시오.</p>
+                   <p><strong>4단계:</strong> 10분 후 사일로, 병기창, 공장이 열립니다. 3, 4그룹은 사일로를 점령합니다.</p>
+                   <p><strong>권장 사항:</strong> 성벽에 부대를 두지 마십시오. 정찰을 자주 하세요.</p>`
+        },
+        my: {
+            name: "Malay",
+            text: `<p><strong>Langkah 1:</strong> Bahagi kumpulan mengikut gambar.</p>
+                   <p><strong>Langkah 2:</strong> Serang bangunan mengikut pelan.</p>
+                   <p><strong>Langkah 3:</strong> Top 4 ialah "Whale", tugas anda memusnahkan pangkalan musuh.</p>
+                   <p><strong>Langkah 4:</strong> Selepas 10 min: Silo, Arsenal dan Kilang dibuka.</p>
+                   <p><strong>Cadangan:</strong> Jangan simpan askar di dinding, buat tinjauan.</p>`
+        },
+        ch: {
+            name: "Schwiizerdütsch",
+            text: `<p><strong>Punkt 1:</strong> Gruppe teile gmäss Bild. <strong>Punkt 2:</strong> Gebäude bsetze.</p>
+                   <p><strong>Punkt 3:</strong> Top 4 sind "Whales", findlichi Base zerstöre.</p>
+                   <p><strong>Punkt 4:</strong> Nach 10 Min öffnet Silo, Arsenal und Fabrik.</p>
+                   <p><strong>Empfehlige:</strong> Kei Truppe uf de Muure laa.</p>`
+        },
+        ae: {
+            name: "العربية",
+            text: `<p><strong>النقطة 1:</strong> انقسموا إلى مجموعات حسب الصورة.</p>
+                   <p><strong>النقطة 2:</strong> الهجوم والسيطرة على المباني حسب المخطط.</p>
+                   <p><strong>النقطة 3:</strong> إذا كنت من أقوى 4 لاعبين، فأنت "حوت". مهمتك تدمير قواعد الأعداء.</p>
+                   <p><strong>النقطة 4:</strong> بعد 10 دقائق تفتح الصومعة والمستودع والمصنع. المجموعتان 3 و4 تسيطران على الصومعة.</p>
+                   <p><strong>توصيات:</strong> لا تترك قوات على السور، قم بالاستطلاع دائماً.</p>`,
+            isRtl: true
+        }
+    };
+
+    const langGrid = document.getElementById('langGrid');
+    const contentDiv = document.getElementById('content');
+
+    Object.keys(translations).forEach(key => {
+        const btn = document.createElement('button');
+        btn.className = 'lang-btn';
+        btn.innerText = translations[key].name;
+        btn.onclick = () => {
+            contentDiv.innerHTML = translations[key].text;
+            contentDiv.className = 'strategy-text' + (translations[key].isRtl ? ' rtl' : '');
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        };
+        langGrid.appendChild(btn);
+    });
+Object.keys(translations).forEach(key => {
+        const btn = document.createElement('button');
+        btn.className = 'lang-btn';
+        btn.innerText = translations[key].name;
+        btn.onclick = () => {
+            contentDiv.innerHTML = translations[key].text;
+            contentDiv.className = 'strategy-text' + (translations[key].isRtl ? ' rtl' : '');
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        };
+        langGrid.appendChild(btn);
+    });
+
+ 
+    document.getElementById('strategyMap').src = "https://github.com/Baitan0501/LastWarMad/blob/main/Screenshot_25.png?raw=true";
+    langGrid.firstChild.click();
+</script>
+
+</body>
+</html>
