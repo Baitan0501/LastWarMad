@@ -17,17 +17,80 @@
         .image-container { text-align: center; }
         img { max-width: 100%; border-radius: 8px; border: 2px solid #444; }
         .rtl { direction: rtl; text-align: right; border-left: none; border-right: 5px solid #f1c40f; }
+.links-container { 
+    background: #333; 
+    padding: 12px; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+    border: 1px solid #444;
+    /* Добавь эти строки ниже: */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Прижмет кнопку к левому краю ВНУТРИ центрального блока */
+}
+
+.links-title { 
+    color: #f1c40f; 
+    font-size: 0.9em; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    margin-bottom: 10px;
+}
+
+.link-item { 
+    display: inline-flex; 
+    align-items: center; 
+    color: #fff; 
+    text-decoration: none; 
+    font-size: 14px; 
+    background: #444; 
+    padding: 8px 15px; 
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.link-item:hover { 
+    background: #555; 
+    border-color: #f1c40f; 
+}
+
+.truck-icon { 
+    font-size: 18px; 
+    margin-right: 10px; 
+    /* Создаем эффект "золотого" свечения для эмодзи */
+    filter: drop-shadow(0 0 2px #f1c40f); 
+}
+#strategyMap {
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+#strategyMap:hover {
+    transform: scale(1.01); /* Легкий эффект при наведении */
+    border-color: #f1c40f;
+}
     </style>
 </head>
 <body>
-
-<div class="container">
+    <div class="container">
     <h1>Desert Storm Strategy</h1>
+
+    <div class="links-container">
+        <div class="links-title">LINK</div>
+        <a href="https://cpt-hedge.com/servers" target="_blank" class="link-item">
+            <span class="truck-icon">🚚</span> secret missions
+        </a>
+    </div>
+
     <div class="lang-grid" id="langGrid"></div>
     <div class="strategy-text" id="content"></div>
+    
     <div class="image-container">
-        <img id="strategyMap" src="your_image.png" alt="Strategy Map">
+        <img id="strategyMap" src="" alt="Strategy Map">
     </div>
+</div>
+<div id="modal" onclick="this.style.display='none'" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:zoom-out; align-items:center; justify-content:center;">
+    <img id="modalImg" style="max-width:95%; max-height:95%; border:2px solid #f1c40f; border-radius:8px;">
 </div>
 
 <script>
@@ -242,9 +305,20 @@ Object.keys(translations).forEach(key => {
         langGrid.appendChild(btn);
     });
 
- 
-    document.getElementById('strategyMap').src = "https://github.com/Baitan0501/LastWarMad/blob/main/Screenshot_34.png?raw=true";
-    langGrid.firstChild.click();
+ const mapImg = document.getElementById('strategyMap');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+
+// При клике на основную картинку открываем модалку
+mapImg.onclick = function() {
+    modal.style.display = "flex";
+    modalImg.src = this.src;
+};
+    // Эта строка "оживляет" картинку
+document.getElementById('strategyMap').src = "https://github.com/Baitan0501/LastWarMad/blob/main/Screenshot_34.png?raw=true";
+
+// Эта строка нажимает на первую кнопку (Русский) при загрузке
+if (langGrid.firstChild) langGrid.firstChild.click();
 </script>
 
 </body>
