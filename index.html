@@ -5,90 +5,98 @@
     <link rel="apple-touch-icon" href="https://github.com/Baitan0501/LastWarMad/blob/main/ico.png?raw=true">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Last War: Desert Storm Strategy</title>
+    <title>Last War: Strategy & Tactics</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #1a1a1a; color: #e0e0e0; margin: 0; padding: 15px; line-height: 1.5; }
-        .container { max-width: 900px; margin: 0 auto; background: #262626; padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { text-align: center; color: #f1c40f; text-transform: uppercase; font-size: 1.4em; margin-bottom: 15px; }
-        .lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 6px; margin-bottom: 20px; }
-        .lang-btn { padding: 8px; cursor: pointer; border: 1px solid #444; border-radius: 4px; background: #333; color: #fff; transition: 0.2s; font-size: 11px; }
-        .lang-btn:hover { border-color: #f1c40f; }
-        .lang-btn.active { background: #f1c40f; color: #000; font-weight: bold; border-color: #f1c40f; }
-        .strategy-text { background: #333; padding: 18px; border-radius: 8px; border-left: 5px solid #f1c40f; margin-bottom: 15px; min-height: 250px; }
-        .strategy-text p { margin: 0 0 10px 0; font-size: 14px; }
-        .image-container { text-align: center; margin-bottom: 20px; }
-        img { max-width: 100%; border-radius: 8px; border: 2px solid #444; }
-        .rtl { direction: rtl; text-align: right; border-left: none; border-right: 5px solid #f1c40f; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #1a1a1a; color: #e0e0e0; margin: 0; padding: 15px; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; background: #262626; padding: 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         
-        .links-container { 
-            background: #333; 
-            padding: 12px; 
-            border-radius: 8px; 
-            margin-bottom: 20px; 
-            border: 1px solid #444;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; 
-        }
-        .links-title { color: #f1c40f; font-size: 0.9em; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
-        .link-item { display: inline-flex; align-items: center; color: #fff; text-decoration: none; font-size: 14px; background: #444; padding: 8px 15px; border-radius: 6px; transition: 0.2s; }
-        .link-item:hover { background: #555; border-color: #f1c40f; }
-        .truck-icon { font-size: 18px; margin-right: 10px; filter: drop-shadow(0 0 2px #f1c40f); }
+        /* Заголовок */
+        h1 { text-align: center; color: #f1c40f; text-transform: uppercase; font-size: 1.8em; margin-bottom: 20px; letter-spacing: 1px; }
 
-        #strategyMap { cursor: zoom-in; transition: transform 0.3s ease; }
-        #strategyMap:hover { transform: scale(1.01); border-color: #f1c40f; }
+        /* Вкладки (Навигация) */
+        .tabs-nav { display: flex; gap: 10px; margin-bottom: 25px; border-bottom: 2px solid #444; padding-bottom: 15px; justify-content: center; }
+        .tab-btn { padding: 12px 30px; cursor: pointer; border: none; border-radius: 6px; background: #333; color: #fff; font-size: 16px; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
+        .tab-btn:hover { background: #444; color: #f1c40f; }
+        .tab-btn.active { background: #f1c40f; color: #000; box-shadow: 0 0 15px rgba(241, 196, 15, 0.3); }
 
-        /* Стили для раздела Tactics */
-        .tactics-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed #444; }
-        .tactics-title { color: #f1c40f; text-align: center; text-transform: uppercase; font-size: 1.2em; margin-bottom: 20px; }
-        .tactics-subtitle { color: #fff; background: #c0392b; display: inline-block; padding: 5px 15px; border-radius: 4px; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
-        .illustration-card { background: #333; border-radius: 8px; padding: 10px; margin-bottom: 20px; border: 1px solid #555; text-align: center; }
-        .illustration-card img { width: 100%; height: auto; display: block; margin-top: 10px; cursor: zoom-in; }
-        .img-caption { font-size: 13px; color: #f1c40f; font-weight: bold; margin-top: 8px; display: block; }
+        /* Содержимое вкладок */
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Шрифты и текст */
+        .strategy-text { background: #333; padding: 25px; border-radius: 8px; border-left: 6px solid #f1c40f; margin-bottom: 20px; }
+        .strategy-text p { margin: 0 0 15px 0; font-size: 18px; } /* Увеличен шрифт */
+        .strategy-text strong { color: #f1c40f; }
+
+        /* Кнопки языков */
+        .lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-bottom: 20px; }
+        .lang-btn { padding: 10px; cursor: pointer; border: 1px solid #444; border-radius: 4px; background: #333; color: #fff; font-size: 13px; transition: 0.2s; }
+        .lang-btn.active { background: #f1c40f; color: #000; font-weight: bold; }
+
+        /* Ссылка */
+        .link-item { display: inline-flex; align-items: center; color: #fff; text-decoration: none; font-size: 16px; background: #c0392b; padding: 12px 20px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; }
+        .link-item:hover { background: #e74c3c; }
+
+        /* Карточки тактики */
+        .tactics-subtitle { color: #fff; background: #c0392b; display: inline-block; padding: 8px 20px; border-radius: 4px; font-weight: bold; margin-bottom: 20px; font-size: 18px; width: 100%; text-align: center; box-sizing: border-box; }
+        .illustration-card { background: #333; border-radius: 10px; padding: 15px; margin-bottom: 25px; border: 1px solid #555; text-align: center; }
+        .img-caption { font-size: 17px; color: #f1c40f; font-weight: bold; margin-bottom: 12px; display: block; }
+        img { max-width: 100%; border-radius: 8px; border: 2px solid #444; cursor: zoom-in; }
+
+        /* Модальное окно */
+        #modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); cursor: zoom-out; align-items: center; justify-content: center; }
+        #modalImg { max-width: 95%; max-height: 95%; border: 3px solid #f1c40f; border-radius: 8px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Desert Storm Strategy</h1>
+    <h1>Desert Storm Guide</h1>
 
-    <div class="links-container">
-        <div class="links-title">LINK</div>
-        <a href="https://cpt-hedge.com/servers" target="_blank" class="link-item">
-            <span class="truck-icon">🚚</span> secret missions
-        </a>
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab('strategy')">Strategy</button>
+        <button class="tab-btn" onclick="openTab('tactics')">Tactics</button>
     </div>
 
-    <div class="lang-grid" id="langGrid"></div>
-    <div class="strategy-text" id="content"></div>
-    
-    <div class="image-container">
-        <img id="strategyMap" src="" alt="Strategy Map">
+    <div id="strategy" class="tab-content active">
+        <div style="text-align: center;">
+            <a href="https://cpt-hedge.com/servers" target="_blank" class="link-item">
+                🚚 SECRET MISSIONS (TRUCKS)
+            </a>
+        </div>
+
+        <div class="lang-grid" id="langGrid"></div>
+        <div class="strategy-text" id="content"></div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <img id="strategyMap" src="https://github.com/Baitan0501/LastWarMad/blob/main/Screenshot_34.png?raw=true" alt="Strategy Map" onclick="openModal(this.src)">
+        </div>
     </div>
 
-    <div class="tactics-section">
-        <div class="tactics-title">Tactics</div>
-        <div class="tactics-subtitle">Save the soldiers!</div>
+    <div id="tactics" class="tab-content">
+        <div class="tactics-subtitle">SAVE THE SOLDIERS!</div>
 
         <div class="illustration-card">
-            <span class="img-caption">1. The strongest squad is on the wall!</span>
-            <img src="https://github.com/Baitan0501/LastWarMad/blob/main/S1.png?raw=true" alt="Strongest squad" onclick="openModal(this.src)">
+            <span class="img-caption">1. Strongest squad on the wall!</span>
+            <img src="https://github.com/Baitan0501/LastWarMad/blob/main/S1.png?raw=true" alt="Tactics 1" onclick="openModal(this.src)">
         </div>
 
         <div class="illustration-card">
-            <span class="img-caption">2. Conduct reconnaissance of the enemy</span>
-            <img src="https://github.com/Baitan0501/LastWarMad/blob/main/S2.png?raw=true" alt="Reconnaissance" onclick="openModal(this.src)">
+            <span class="img-caption">2. Conduct enemy reconnaissance</span>
+            <img src="https://github.com/Baitan0501/LastWarMad/blob/main/S2.png?raw=true" alt="Tactics 2" onclick="openModal(this.src)">
         </div>
 
         <div class="illustration-card">
-            <span class="img-caption">3. Assess the enemy's strength, DO NOT attack whales!</span>
-            <img src="https://github.com/Baitan0501/LastWarMad/blob/main/S3.png?raw=true" alt="Assess strength" onclick="openModal(this.src)">
+            <span class="img-caption">3. Assess strength, DO NOT attack whales!</span>
+            <img src="https://github.com/Baitan0501/LastWarMad/blob/main/S3.png?raw=true" alt="Tactics 3" onclick="openModal(this.src)">
         </div>
     </div>
 </div>
 
-<div id="modal" onclick="this.style.display='none'" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); cursor:zoom-out; align-items:center; justify-content:center;">
-    <img id="modalImg" style="max-width:95%; max-height:95%; border:2px solid #f1c40f; border-radius:8px;">
+<div id="modal" onclick="this.style.display='none'">
+    <img id="modalImg">
 </div>
 
 <script>
@@ -274,41 +282,37 @@
                <p><strong>5. نصائح:</strong> أفرغ السور من القوات، قم بالاستطلاع. السيطرة على المباني تضمن الفوز!</p>`,
         isRtl: true
     }
-};
+
+    };
+
+    function openTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+
+    function openModal(src) {
+        const modal = document.getElementById('modal');
+        modal.style.display = "flex";
+        document.getElementById('modalImg').src = src;
+    }
 
     const langGrid = document.getElementById('langGrid');
     const contentDiv = document.getElementById('content');
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
 
-    // Функция открытия модалки
-    function openModal(src) {
-        if (src && src.indexOf('ССЫЛКА') === -1) {
-            modal.style.display = "flex";
-            modalImg.src = src;
-        }
-    }
-
-    // Создание кнопок
     Object.keys(translations).forEach(key => {
         const btn = document.createElement('button');
         btn.className = 'lang-btn';
         btn.innerText = translations[key].name;
         btn.onclick = () => {
             contentDiv.innerHTML = translations[key].text;
-            contentDiv.className = 'strategy-text' + (translations[key].isRtl ? ' rtl' : '');
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         };
         langGrid.appendChild(btn);
     });
 
-    // Оживление основной карты
-    const mapImg = document.getElementById('strategyMap');
-    mapImg.src = "https://github.com/Baitan0501/LastWarMad/blob/main/Screenshot_34.png?raw=true&v=2";
-    mapImg.onclick = function() { openModal(this.src); };
-
-    // Авто-клик на первую кнопку
     if (langGrid.firstChild) langGrid.firstChild.click();
 </script>
 
