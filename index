@@ -93,27 +93,188 @@
 
 <script>
     const translations = {
-        ru: { name: "Русский", flag: "🇷🇺", text: `<p><strong>1.</strong> Заходим на поле боя и делимся на группы согласно схеме на рисунке (сделайте это до начала боя).</p><p><strong>2. Захват зданий:</strong> Гр. 1 — Нефть 1, Гр. 2 — Нефть 2, Гр. 3 — Госпиталь 1, Гр. 4 — Госпиталь 2, Гр. 5 — Инфо-центр, Гр. 6 — Госпиталь 3, Гр. 7 — Научный хаб.</p><p><strong>3. Через 10 минут (Ядерная шахта):</strong> Гр. 6 полностью уходит на захват шахты. Из Гр. 4: двое идут на шахту, один на Нефть 2. Гр. 3 покидает госпиталь: двое на Нефть 1, один в Инфо-центр.</p><p><strong>4. Киты (Топ-4):</strong> Перемещайтесь между зданиями, сжигайте врагов и помогайте там, где группы не справляются.</p><p><strong>5. Советы:</strong> Уберите войска со стен (оставьте только 1 сильный отряд), делайте разведку, ловите врага на марше. Удержим здания — победим!</p>` },
-        ua: { name: "Українська", flag: "🇺🇦", text: `<p><strong>1.</strong> Заходимо на поле бою та ділимося на групи за схемою на малюнку (зробіть це до початку бою).</p><p><strong>2. Захоплення будівель:</strong> Гр. 1 — Нафта 1, Гр. 2 — Нафта 2, Гр. 3 — Шпиталь 1, Гр. 4 — Шпиталь 2, Гр. 5 — Інфо-центр, Гр. 6 — Шпиталь 3, Гр. 7 — Науковий хаб.</p><p><strong>3. Через 10 хвилин (Ядерна шахта):</strong> Гр. 6 повністю йде на шахту. З Гр. 4: двоє на шахту, один на Нафту 2. Гр. 3 залишає шпиталь: двоє на Нафту 1, один в Інфо-центр.</p><p><strong>4. Кити (Топ-4):</strong> Літайте між будівлями, паліть ворогів та допомагайте там, де основні групи не справляються.</p><p><strong>5. Поради:</strong> Приберіть війська зі стін (залиште 1 сильний загін), робіть розвідку. Втримаємо будівлі — переможемо!</p>` },
-        en: { name: "English", flag: "🇺🇸", text: `<p><strong>1.</strong> Enter the battlefield and divide into groups according to the scheme before the battle starts.</p><p><strong>2. Objective:</strong> Gr 1 — Oil 1, Gr 2 — Oil 2, Gr 3 — Hospital 1, Gr 4 — Hospital 2, Gr 5 — Info Center, Gr 6 — Hospital 3, Gr 7 — Science Hub.</p><p><strong>3. After 10 min (Nuclear Silo):</strong> Gr 6 moves entirely to the Silo. From Gr 4: 2 players to Silo, 1 to Oil 2. Gr 3 leaves hospital: 2 players to Oil 1, 1 to Info Center.</p><p><strong>4. Whales (Top 4):</strong> Move between buildings, burn enemy bases, and provide support where groups are struggling.</p><p><strong>5. Tips:</strong> Clear your walls (keep only the strongest march), scout enemies, and attack when they are out. Hold the buildings to win!</p>` },
-        es: { name: "Español", flag: "🇪🇸", text: `<p><strong>1.</strong> Entren al campo de batalla y divídanse según el esquema.</p><p><strong>2. Captura:</strong> G1 — Petróleo 1, G2 — Petróleo 2, G3 — Hospital 1, G4 — Hospital 2, G5 — Centro de Info, G6 — Hospital 3, G7 — Centro de Ciencia.</p><p><strong>3. Tras 10 min (Silo Nuclear):</strong> G6 va al Silo. Del G4: 2 al Silo, 1 al Petróleo 2. G3 deja el hospital.</p><p><strong>4. Ballenas (Top 4):</strong> Vuelen entre edificios, destruyan enemigos.</p><p><strong>5. Consejos:</strong> Quiten tropas del muro, exploren y ataquen.</p>` },
-        de: { name: "Deutsch", flag: "🇩🇪", text: `<p><strong>1.</strong> Schlachtfeld betreten и т.д.</p>` },
-        fr: { name: "Français", flag: "🇫🇷", text: `<p><strong>1.</strong> Entrez sur le champ de bataille...</p>` },
-        it: { name: "Italiano", flag: "🇮🇹", text: `<p><strong>1.</strong> Entrate in campo...</p>` },
-        tr: { name: "Türkçe", flag: "🇹🇷", text: `<p><strong>1.</strong> Savaş başlamadan...</p>` },
-        pl: { name: "Polski", flag: "🇵🇱", text: `<p><strong>1.</strong> Wejdź na pole bitwy...</p>` },
-        kz: { name: "Қазақша", flag: "🇰🇿", text: `<p><strong>1.</strong> Шайқас басталғанша...</p>` },
-        pt: { name: "Português", flag: "🇧🇷", text: `<p><strong>1.</strong> Entre no campo...</p>` },
-        nl: { name: "Nederlands", flag: "🇳🇱", text: `<p><strong>1.</strong> Betreed het slagveld...</p>` },
-        se: { name: "Svenska", flag: "🇸🇪", text: `<p><strong>1.</strong> Gå in på slagfältet...</p>` },
-        cn: { name: "中文 (简体)", flag: "🇨🇳", text: `<p><strong>1.</strong> 战斗开始前...</p>` },
-        tw: { name: "中文 (繁體)", flag: "🇭🇰", text: `<p><strong>1.</strong> 戰鬥開始前...</p>` },
-        jp: { name: "日本語", flag: "🇯🇵", text: `<p><strong>1.</strong> 戦闘開始前に...</p>` },
-        kr: { name: "한국어", flag: "🇰🇷", text: `<p><strong>1.</strong> 전투 시작 전...</p>` },
-        my: { name: "Malay", flag: "🇲🇾", text: `<p><strong>1.</strong> Masuk ke medan...</p>` },
-        id: { name: "Bahasa Indonesia", flag: "🇮🇩", text: `<p><strong>1.</strong> Masuk ke medan...</p>` },
-        ae: { name: "العربية", flag: "🇦🇪", text: `<p><strong>1.</strong> ادخل ساحة المعركة...</p>`, isRtl: true }
-    };
+    ru: {
+        name: "Русский",
+        flag: "🇷🇺",
+        text: `<p><strong>1.</strong> Заходим на поле боя и делимся на группы согласно схеме на рисунке (сделайте это до начала боя).</p>
+               <p><strong>2. Захват зданий:</strong> Гр. 1 — Нефть 1, Гр. 2 — Нефть 2, Гр. 3 — Госпиталь 1, Гр. 4 — Госпиталь 2, Гр. 5 — Инфо-центр, Гр. 6 — Госпиталь 3, Гр. 7 — Научный хаб.</p>
+               <p><strong>3. Через 10 минут (Ядерная шахта):</strong> Гр. 6 полностью уходит на захват шахты. Из Гр. 4: двое идут на шахту, один на Нефть 2. Гр. 3 покидает госпиталь: двое на Нефть 1, один в Инфо-центр.</p>
+               <p><strong>4. Киты (Топ-4):</strong> Перемещайтесь между зданиями, сжигайте врагов и помогайте там, где группы не справляются.</p>
+               <p><strong>5. Советы:</strong> Уберите войска со стен (оставьте только 1 сильный отряд), делайте разведку, ловите врага на марше. Удержим здания — победим!</p>`
+    },
+    ua: {
+        name: "Українська",
+        flag: "🇺🇦",
+        text: `<p><strong>1.</strong> Заходимо на поле бою та ділимося на групи за схемою на малюнку (зробіть це до початку бою).</p>
+               <p><strong>2. Захоплення будівель:</strong> Гр. 1 — Нафта 1, Гр. 2 — Нафта 2, Гр. 3 — Шпиталь 1, Гр. 4 — Шпиталь 2, Гр. 5 — Інфо-центр, Гр. 6 — Шпиталь 3, Гр. 7 — Науковий хаб.</p>
+               <p><strong>3. Через 10 хвилин (Ядерна шахта):</strong> Гр. 6 повністю йде на шахту. З Гр. 4: двоє на шахту, один на Нафту 2. Гр. 3 залишає шпиталь: двоє на Нафту 1, один в Інфо-центр.</p>
+               <p><strong>4. Кити (Топ-4):</strong> Літайте між будівлями, паліть ворогів та допомагайте там, де основні групи не справляються.</p>
+               <p><strong>5. Поради:</strong> Приберіть війська зі стін (залиште 1 сильний загін), робіть розвідку. Втримаємо будівлі — переможемо!</p>`
+    },
+    en: {
+        name: "English",
+        flag: "🇺🇸",
+        text: `<p><strong>1.</strong> Enter the battlefield and divide into groups according to the scheme before the battle starts.</p>
+               <p><strong>2. Objective:</strong> Gr 1 — Oil 1, Gr 2 — Oil 2, Gr 3 — Hospital 1, Gr 4 — Hospital 2, Gr 5 — Info Center, Gr 6 — Hospital 3, Gr 7 — Science Hub. Grumpy at science hub to start ;)</p>
+               <p><strong>3. After 10 min (Nuclear Silo):</strong> Gr 6 moves entirely to the Silo. From Gr 4: 2 players to Silo, 1 to Oil 2. Gr 3 leaves hospital: 2 players to Oil 1, 1 to Info Center.</p>
+               <p><strong>4. Whales (Top 4):</strong> Move between buildings, burn enemy bases, and provide support where groups are struggling.</p>
+               <p><strong>5. Tips:</strong> Clear your walls (keep only the strongest march), scout enemies, and attack when they are out. Hold the buildings to win!</p>`
+    },
+    es: {
+        name: "Español",
+        flag: "🇪🇸",
+        text: `<p><strong>1.</strong> Entren al campo de batalla y divídanse según el esquema antes de que empiece la lucha.</p>
+               <p><strong>2. Captura:</strong> G1 — Petróleo 1, G2 — Petróleo 2, G3 — Hospital 1, G4 — Hospital 2, G5 — Centro de Info, G6 — Hospital 3, G7 — Centro de Ciencia.</p>
+               <p><strong>3. Tras 10 min (Silo Nuclear):</strong> G6 va al Silo. Del G4: 2 al Silo, 1 al Petróleo 2. G3 deja el hospital: 2 al Petróleo 1, 1 al Centro de Info.</p>
+               <p><strong>4. Ballenas (Top 4):</strong> Vuelen entre edificios, destruyan enemigos y ayuden donde sea necesario.</p>
+               <p><strong>5. Consejos:</strong> Quiten tropas del muro (dejen solo la más fuerte), exploren y ataquen cuando el enemigo esté fuera.</p>`
+    },
+    de: {
+        name: "Deutsch",
+        flag: "🇩🇪",
+        text: `<p><strong>1.</strong> Schlachtfeld betreten und vor Kampfbeginn in Gruppen gemäß Plan aufteilen.</p>
+               <p><strong>2. Ziele:</strong> Gr 1 — Öl 1, Gr 2 — Öl 2, Gr 3 — Krankenhaus 1, Gr 4 — Krankenhaus 2, Gr 5 — Info-Zentrum, Gr 6 — Krankenhaus 3, Gr 7 — Forschungszentrum.</p>
+               <p><strong>3. Nach 10 Min (Atomsilo):</strong> Gr 6 wechselt komplett zum Silo. Von Gr 4: 2 zum Silo, 1 zu Öl 2. Gr 3 verlässt Krankenhaus: 2 zu Öl 1, 1 zum Info-Zentrum.</p>
+               <p><strong>4. Wale (Top 4):</strong> Zwischen Gebäuden springen, Feinde vernichten und dort helfen, wo Gruppen Hilfe brauchen.</p>
+               <p><strong>5. Tipps:</strong> Mauern leeren (nur stärkster Trupp), auskundschaften, Gebäude bis zum Ende halten!</p>`
+    },
+    fr: {
+        name: "Français",
+        flag: "🇫🇷",
+        text: `<p><strong>1.</strong> Entrez sur le champ de bataille et divisez-vous en groupes selon le schéma avant le début du combat.</p>
+               <p><strong>2. Objectifs:</strong> G1 — Pétrole 1, G2 — Pétrole 2, G3 — Hôpital 1, G4 — Hôpital 2, G5 — Centre Info, G6 — Hôpital 3, G7 — Hub Scientifique.</p>
+               <p><strong>3. Après 10 min (Silo Nucléaire):</strong> G6 part au Silo. Du G4: 2 au Silo, 1 au Pétrole 2. G3 quitte l'hôpital: 2 au Pétrole 1, 1 au Centre Info.</p>
+               <p><strong>4. Baleines (Top 4):</strong> Déplacez-vous entre les bâtiments, brûlez les ennemis et aidez là où c'est nécessaire.</p>
+               <p><strong>5. Conseils:</strong> Videz vos murs (gardez 1 escouade), scoutez l'ennemi. Tenez les bâtiments pour gagner!</p>`
+    },
+    it: {
+        name: "Italiano",
+        flag: "🇮🇹",
+        text: `<p><strong>1.</strong> Entrate in campo e dividetevi in gruppi secondo lo schema prima dell'inizio della battaglia.</p>
+               <p><strong>2. Obiettivi:</strong> G1 — Petrolio 1, G2 — Petrolio 2, G3 — Ospedale 1, G4 — Ospedale 2, G5 — Centro Info, G6 — Ospedale 3, G7 — Hub Scientifico.</p>
+               <p><strong>3. Dopo 10 min (Silo Nucleare):</strong> G6 va al Silo. Dal G4: 2 al Silo, 1 al Petrolio 2. G3 lascia l'ospedale: 2 al Petrolio 1, 1 al Centro Info.</p>
+               <p><strong>4. Balene (Top 4):</strong> Spostatevi tra gli edifici, distruggete i nemici e aiutate dove necessario.</p>
+               <p><strong>5. Consigli:</strong> Togliete truppe dalle mura, fate ricognizione. Difendete gli edifici per la vittoria!</p>`
+    },
+    tr: {
+        name: "Türkçe",
+        flag: "🇹🇷",
+        text: `<p><strong>1.</strong> Savaş başlamadan önce savaş alanına girin ve şemaya göre gruplara ayrılın.</p>
+               <p><strong>2. Hedefler:</strong> Grup 1 — Petrol 1, Grup 2 — Petrol 2, Grup 3 — Hastane 1, Grup 4 — Hastane 2, Grup 5 — Bilgi Merkezi, Grup 6 — Hastane 3, Grup 7 — Bilim Merkezi.</p>
+               <p><strong>3. 10 Dakika Sonra (Nükleer Silo):</strong> Grup 6 Silo'ya geçer. Grup 4'ten: 2 kişi Silo'ya, 1 kişi Petrol 2'ye. Grup 3 hastaneden ayrılır: 2 kişi Petrol 1'e, 1 kişi Bilgi Merkezi'ne.</p>
+               <p><strong>4. Balinalar (En Güçlü 4):</strong> Binalar arası geçiş yapın, düşmanları yakın ve zayıf kalan gruplara yardım edin.</p>
+               <p><strong>5. Öneriler:</strong> Duvardaki birlikleri çekin, keşif yapın. Binaları tutarsak zafer bizim!</p>`
+    },
+    pl: {
+        name: "Polski",
+        flag: "🇵🇱",
+        text: `<p><strong>1.</strong> Wejdź na pole bitwy i podziel się na grupy zgodnie ze schematem przed rozpoczęciem walki.</p>
+               <p><strong>2. Cele:</strong> G1 — Ropa 1, G2 — Ropa 2, G3 — Szpital 1, G4 — Szpital 2, G5 — Centrum Info, G6 — Szpital 3, G7 — Hub Naukowy.</p>
+               <p><strong>3. Po 10 min (Silos Nuklearny):</strong> G6 idzie do Silosu. Z G4: 2 osoby do Silosu, 1 do Ropy 2. G3 opuszcza szpital: 2 osoby do Ropy 1, 1 do Centrum Info.</p>
+               <p><strong>4. Wieloryby (Top 4):</strong> Latajcie między budynkami, palcie wrogów i pomagajcie tam, gdzie grupy nie dają rady.</p>
+               <p><strong>5. Rady:</strong> Zdejmij wojsko z murów, rób zwiad. Utrzymanie budynków to klucz do zwycięstwa!</p>`
+    },
+    kz: {
+        name: "Қазақша",
+        flag: "🇰🇿",
+        text: `<p><strong>1.</strong> Шайқас басталғанша ұрыс алаңына кіріп, суреттегі схема бойынша топтарға бөлініңіз.</p>
+               <p><strong>2. Ғимараттарды басып алу:</strong> 1-топ — Мұнай 1, 2-топ — Мұнай 2, 3-топ — Госпиталь 1, 4-топ — Госпиталь 2, 5-топ — Инфо орталық, 6-топ — Госпиталь 3, 7-топ — Ғылыми хаб.</p>
+               <p><strong>3. 10 минуттан кейін (Ядролық шахта):</strong> 6-топ шахтаға ауысады. 4-топтан: 2 адам шахтаға, 1 адам Мұнай 2-ге. 3-топ госпитальдан кетеді: 2 адам Мұнай 1-ге, 1 адам Инфо орталыққа.</p>
+               <p><strong>4. Киттер (Топ-4):</strong> Ғимараттар арасында ұшып, жауды жойыңыз және топтарға көмектесіңіз.</p>
+               <p><strong>5. Кеңестер:</strong> Әскерді қабырғадан алыңыз, барлау жасаңыз. Жеңіс біздің қолымызда!</p>`
+    },
+    pt: {
+        name: "Português",
+        flag: "🇧🇷",
+        text: `<p><strong>1.</strong> Entre no campo de batalha e divida-se em grupos conforme o esquema antes do combate começar.</p>
+               <p><strong>2. Objetivos:</strong> G1 — Petróleo 1, G2 — Petróleo 2, G3 — Hospital 1, G4 — Hospital 2, G5 — Centro de Info, G6 — Hospital 3, G7 — Hub Científico.</p>
+               <p><strong>3. Após 10 min (Silo Nuclear):</strong> G6 vai para o Silo. Do G4: 2 para o Silo, 1 para o Petróleo 2. G3 sai do hospital: 2 para o Petróleo 1, 1 para o Centro de Info.</p>
+               <p><strong>4. Baleias (Top 4):</strong> Movam-se entre os edifícios, queimem inimigos e ajudem onde as equipes precisarem.</p>
+               <p><strong>5. Dicas:</strong> Tire as tropas do muro, faça reconhecimento. Segure os prédios para vencer!</p>`
+    },
+    nl: {
+        name: "Nederlands",
+        flag: "🇳🇱",
+        text: `<p><strong>1.</strong> Betreed het slagveld en verdeel in groepen volgens het schema voordat het gevecht begint.</p>
+               <p><strong>2. Doelen:</strong> G1 — Olie 1, G2 — Olie 2, G3 — Ziekenhuis 1, G4 — Ziekenhuis 2, G5 — Info Centrum, G6 — Ziekenhuis 3, G7 — Wetenschapshub.</p>
+               <p><strong>3. Na 10 min (Kernraketsilo):</strong> G6 gaat volledig naar de Silo. Van G4: 2 naar Silo, 1 naar Olie 2. G3 verlaat ziekenhuis: 2 naar Olie 1, 1 naar Info Centrum.</p>
+               <p><strong>4. Whales (Top 4):</strong> Vlieg tussen gebouwen, verbrand vijanden en help waar nodig.</p>
+               <p><strong>5. Tips:</strong> Haal troepen van de muur, verken de vijand. Houd de gebouwen vast voor de winst!</p>`
+    },
+    se: {
+        name: "Svenska",
+        flag: "🇸🇪",
+        text: `<p><strong>1.</strong> Gå in på slagfältet och dela upp i grupper enligt schemat innan striden börjar.</p>
+               <p><strong>2. Mål:</strong> G1 — Olja 1, G2 — Olja 2, G3 — Sjukhus 1, G4 — Sjukhus 2, G5 — Info Center, G6 — Sjukhus 3, G7 — Forskningshub.</p>
+               <p><strong>3. Efter 10 min (Kärnvapensilo):</strong> G6 går helt till Silon. Från G4: 2 till Silon, 1 till Olja 2. G3 lämnar sjukhuset: 2 till Olja 1, 1 till Info Center.</p>
+               <p><strong>4. Whales (Topp 4):</strong> Flytta mellan byggnader, bränn fiender och hjälp till där det behövs.</p>
+               <p><strong>5. Tips:</strong> Töm murarna på trupper, scouta ofta. Håll byggnaderna för att vinna!</p>`
+    },
+    cn: {
+        name: "中文 (简体)",
+        flag: "🇨🇳",
+        text: `<p><strong>1.</strong> 战斗开始前进入战场，根据图纸分队。</p>
+               <p><strong>2. 建筑占领：</strong> 1组-石油1，2组-石油2，3组-医院1，4组-医院2，5组-信息中心，6组-医院3，7组-科研中心。</p>
+               <p><strong>3. 10分钟后（核弹井）：</strong> 6组全体进攻核弹井。4组派2人去核弹井，1人协防石油2。3组撤离医院：2人去石油1，1人去信息中心。</p>
+               <p><strong>4. 鲸鱼（战力前4）：</strong> 在建筑间穿插，焚毁敌军基地，支援薄弱环节。</p>
+               <p><strong>5. 建议：</strong> 城墙撤兵，多侦察。守住建筑即是胜利！</p>`
+    },
+    tw: {
+        name: "中文 (繁體)",
+        flag: "🇭🇰",
+        text: `<p><strong>1.</strong> 戰鬥開始前進入戰場，根據圖紙分隊。</p>
+               <p><strong>2. 建築佔領：</strong> 1組-石油1，2組-石油2，3組-醫院1，4組-醫院2，5組-信息中心，6組-醫院3，7組-科研中心。</p>
+               <p><strong>3. 10分鐘後（核彈井）：</strong> 6組全體進攻核彈井。4組派2人去核彈井，1人協防石油2。3組撤離醫院：2人去石油1，1人去信息中心。</p>
+               <p><strong>4. 鯨魚（戰力前4）：</strong> 在建築間穿插，焚毀敵方基地，支援薄弱環節。</p>
+               <p><strong>5. 建議：</strong> 城牆撤兵，多偵察。守住建築，勝利在望！</p>`
+    },
+    jp: {
+        name: "日本語",
+        flag: "🇯🇵",
+        text: `<p><strong>1.</strong> 戦闘開始前に戦場に入り、図に従ってグループに分かれてください。</p>
+               <p><strong>2. 占領目標:</strong> G1-石油1, G2-石油2, G3-病院1, G4-病院2, G5-情報センター, G6-病院3, G7-科学ハブ。</p>
+               <p><strong>3. 10分後（核サイロ）:</strong> G6は完全にサイロへ移動。G4から2名がサイロ、1名が石油2へ向かいます。G3は病院を離れ、2名が石油1、1名が情報センターへ。</p>
+               <p><strong>4. 鯨（上位4名）:</strong> 建物を飛び回り、敵を燃やし、支援が必要な場所へ向かってください。</p>
+               <p><strong>5. ヒント:</strong> 壁の部隊を空にし、偵察を怠らず、最後まで建物を保持しましょう！</p>`
+    },
+    kr: {
+        name: "한국어",
+        flag: "🇰🇷",
+        text: `<p><strong>1.</strong> 전투 시작 전 전장에 입장하여 도표에 따라 그룹을 나누십시오.</p>
+               <p><strong>2. 점령 목표:</strong> 1조-석유1, 2조-석유2, 3조-병원1, 4조-병원2, 5조-정보 센터, 6조-병원3, 7조-과학 허브.</p>
+               <p><strong>3. 10분 후 (핵 사일로):</strong> 6조는 사일로로 전원 이동. 4조에서 2명은 사일로, 1명은 석유2로. 3조는 병원에서 철수하여 2명은 석유1, 1명은 정보 센터로.</p>
+               <p><strong>4. 고래 (상위 4명):</strong> 건물 사이를 이동하며 적을 섬멸하고 지원이 필요한 곳을 도우십시오.</p>
+               <p><strong>5. 팁:</strong> 성벽 비우기, 정찰 필수. 건물을 사수하면 승리합니다!</p>`
+    },
+    my: {
+        name: "Malay",
+        flag: "🇲🇾",
+        text: `<p><strong>1.</strong> Masuk ke medan perang dan bahagi kumpulan mengikut rajah sebelum pertempuran bermula.</p>
+               <p><strong>2. Sasaran:</strong> G1 — Minyak 1, G2 — Minyak 2, G3 — Hospital 1, G4 — Hospital 2, G5 — Pusat Info, G6 — Hospital 3, G7 — Hab Sains.</p>
+               <p><strong>3. Selepas 10 min (Silo Nuklear):</strong> G6 pindah ke Silo. Dari G4: 2 ke Silo, 1 ke Minyak 2. G3 tinggalkan hospital: 2 ke Minyak 1, 1 ke Pusat Info.</p>
+               <p><strong>4. Whale (Top 4):</strong> Bergerak antara bangunan, musnahkan musuh dan bantu kumpulan yang lemah.</p>
+               <p><strong>5. Tip:</strong> Kosongkan dinding, buat tinjauan. Kekalkan bangunan untuk menang!</p>`
+    },
+    id: {
+        name: "Bahasa Indonesia",
+        flag: "🇮🇩",
+        text: `<p><strong>1.</strong> Masuk ke medan perang dan bagi kelompok sesuai skema gambar sebelum pertempuran dimulai.</p>
+               <p><strong>2. Target:</strong> G1 — Minyak 1, G2 — Minyak 2, G3 — Rumah Sakit 1, G4 — Rumah Sakit 2, G5 — Pusat Info, G6 — Rumah Sakit 3, G7 — Hub Sains.</p>
+               <p><strong>3. Setelah 10 mnt (Silo Nuklir):</strong> G6 pindah ke Silo. Dari G4: 2 orang ke Silo, 1 ke Minyak 2. G3 tinggalkan RS: 2 orang ke Minyak 1, 1 ke Pusat Info.</p>
+               <p><strong>4. Whale (Top 4):</strong> Berpindah antar bangunan, hancurkan musuh, dan bantu grup yang kesulitan.</p>
+               <p><strong>5. Tips:</strong> Kosongkan pasukan di tembok, lakukan pengintaian. Tahan bangunan untuk menang!</p>`
+    },
+    ae: {
+        name: "العربية",
+        flag: "🇦🇪",
+        text: `<p><strong>1.</strong> ادخل ساحة المعركة وانقسم إلى مجموعات حسب المخطط قبل بدء القتال.</p>
+               <p><strong>2. الأهداف:</strong> ج1 - نفط 1، ج2 - نفط 2، ج3 - مستشفى 1، ج4 - مستشفى 2، ج5 - مركز معلومات، ج6 - مستشفى 3، ج7 - المركز العلمي.</p>
+               <p><strong>3. بعد 10 دقائق (صومعة نووية):</strong> ج6 تتوجه للصومعة. من ج4: 2 للصومعة، 1 لنفط 2. ج3 تغادر المستشفى: 2 لنفط 1، 1 لمركز المعلومات.</p>
+               <p><strong>4. الحيتان (أقوى 4):</strong> التنقل بين المباني، حرق قواعد الأعداء ودعم المجموعات الضعيفة.</p>
+               <p><strong>5. نصائح:</strong> أفرغ السور من القوات، قم بالاستطلاع. السيطرة على المباني تضمن الفوز!</p>`,
+        isRtl: true
+    }
+};
 
     const langGrid = document.getElementById('langGrid');
     const contentDiv = document.getElementById('content');
